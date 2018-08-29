@@ -18,12 +18,45 @@
 
 		<div id="app1">
 			<h4>Section 3 Lec 34</h4>
-			<!-- completely desapear from HTML (no hidden nor hide) -->
+			<!-- v-if - completely remove from HTML (no hidden nor hide) -->
 			<p v-if="show">You can see me! <span>Hello!</span></p>
 			<p v-else>Now you see me</p>
-			<p>Do you see me?</p>
-			<button type="button" v-on:click="show =!show">click!</button>
+			<!-- v-shoe - hide element insted of removing -->
+			<p v-show="show">Do you see me?</p>
 
+			<!-- you can wrap multiple tags by using template -->
+			<template v-if="show">
+				<h5>This is heading5</h5>
+				<p>Now using template</p>
+			</template>
+			<button type="button" v-on:click="show =!show">click!</button>
+		</div>
+
+		<div id="app2">
+			<h4>Sec3 Lec38 Looping</h4>
+			<ul>
+				<!-- looping array -->
+				<li v-for="ingredient in ingredients">{{ ingredient }}</li>
+				<!-- display index. order is important (element, index) - you can name it -->
+				<li v-for="(ingredient,i) in ingredients">{{ ingredient }} ({{ i }})</li>
+					<!-- use template if you want to create multipla elements -->
+				<hr>
+				<div v-for="(ingredient, index) in ingredients" v-bind:style="{color: 'blue'}">
+					<h5>{{ ingredient }}</h5>
+					<p>{{ index }}</p>
+				</div>
+				<hr>
+				<p>Looping object</p>
+				<div v-for="person in persons">
+					<p>{{ person.name }}</p>
+				</div>
+				<hr>
+				<li v-for="person in persons">
+					<div v-for="(value, key, index) in person">{{ key }}: {{ value }} ({{ index }})</div>
+				</li>
+
+
+			</ul>
 		</div>
 
 
